@@ -218,6 +218,7 @@ jobs:
          at: ~/
 
       - update_dependencies
+      - install_aws_cli
       - run:
           name: Installing ansible
           command: |
