@@ -13,6 +13,36 @@ commands:
           command: |
             aws cloudformation delete-stack --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}
             aws cloudformation delete-stack --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}
+  
+  update_dependencies:
+    description: Updating the dependencies
+    steps:
+      - run:
+          command: |
+            apk update && apk upgrade
+  
+  install_tar:
+    description: Install tar utility
+    steps:
+      - run:
+          command: |
+            apk add tar
+
+  install_nodejs_and_npm:
+    description: Install nodeJS and npm  utility
+    steps:
+      - run:
+          command: |
+            apk add nodejs
+            apk add npm
+
+  install_aws_cli:
+    description: Install AWS CLI (As to destroy the environment we use aws command)
+    steps:
+      - run:
+          command: |
+             pip install awscli --upgrade
+             
 jobs:
   build-frontend:
     docker:
@@ -149,6 +179,28 @@ jobs:
             - project/.circleci/ansible/inventory.txt
       - destroy-environment
 
+  configure-infrastructure:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ["09:1e:92:15:83:8d:67:e7:ee:99:cc:df:66:3c:9c:23"]
+      - attach_workspace:
+         at: ~/
+
+      - update_dependencies
+      - run:
+          name: Installing ansible
+          command: |
+            apk add --update ansible
+      - run:
+          name: Configure server
+          command: |
+            cd .circleci/ansible
+            ansible-playbook -i inventory.txt configure-server.yml
+      # Here's where you will add some code to rollback on failure
+      - destroy-environment
 workflows:
   default:
     jobs:
@@ -167,3 +219,5 @@ workflows:
           filters:
             branches:
               only: [main]
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]
