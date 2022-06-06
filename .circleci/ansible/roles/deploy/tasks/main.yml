@@ -42,11 +42,11 @@
 #     src: artifact.tar.gz
 #     dest: /home/ec2-user/backend_dir
 
-- name: Copying the articfact from local to EC2
+- name: Copying the artifact from local to EC2
   become: true
   copy:
     src: artifact.tar.gz
-    remote_src : /home/ec2-user/backend_dir
+    dest : /home/ec2-user/backend_dir
 
 - name: Uncompress Backend
   become: true
