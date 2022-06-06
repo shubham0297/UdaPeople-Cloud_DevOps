@@ -35,6 +35,13 @@ commands:
           command: |
             apk add nodejs
             apk add npm
+  
+  install_curl:
+    description: Install curl utility
+    steps:
+      - run:
+          command: |
+            apk add curl
 
   install_aws_cli:
     description: Install AWS CLI (As to destroy the environment we use aws command)
@@ -255,6 +262,7 @@ jobs:
       - install_tar
       - install_nodejs_and_npm
       - install_aws_cli
+      - install_curl
 
       - restore_cache:
           keys: [frontend-build]
@@ -291,6 +299,7 @@ jobs:
       - install_tar
       - install_nodejs_and_npm
       - install_aws_cli
+      - install_curl
       - run:
           name: Installing ansible
           command: |
@@ -310,7 +319,7 @@ jobs:
       # Here's where you will add some code to rollback on failure   
       - destroy-environment
       - revert-migrations
-      
+
 workflows:
   default:
     jobs:
