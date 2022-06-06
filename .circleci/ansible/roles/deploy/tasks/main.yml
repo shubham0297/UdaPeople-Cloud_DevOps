@@ -40,8 +40,7 @@
 - name: Copying the articfact from local to EC2
   unarchive:
     src: /root/project/artifact.tar.gz
-    dest: /home/ubuntu/artifact.tar.gz
-
+    dest: /home/ubuntu/
 # - name: Copying the artifact from local to EC2
 #   become: true
 #   copy:
