@@ -46,7 +46,8 @@
   become: true
   copy:
     src: artifact.tar.gz
-    dest : /home/ec2-user/backend_dir
+    dest : /home/ec2-user/backend_dir/
+    remote_src: yes
 
 - name: Uncompress Backend
   become: true
