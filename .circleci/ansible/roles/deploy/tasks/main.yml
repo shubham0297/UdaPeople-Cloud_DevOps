@@ -80,6 +80,7 @@
       WantedBy=multi-user.target
 
 - name: "Configure systemd"
+  become: true
   systemd:
     daemon_reload: yes
     name: exporter
