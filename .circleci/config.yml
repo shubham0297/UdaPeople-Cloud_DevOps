@@ -279,6 +279,7 @@ jobs:
       - run:
           name: Deploy frontend objects
           command: |
+            echo API_URL=http://$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text):3030 >> "frontend/.env"
             cd frontend
             npm i
             npm run build
