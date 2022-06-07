@@ -379,10 +379,6 @@ jobs:
       - checkout
       - install_aws_cli
       - run:
-          name: Install dependencies
-          command: |
-            # your code here
-      - run:
           name: Update cloudfront distribution
           command: |
             aws cloudformation deploy \
