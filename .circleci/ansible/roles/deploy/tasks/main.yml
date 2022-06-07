@@ -85,4 +85,4 @@
     daemon_reload: yes
     name: node-exporter
     enabled: yes
-    state: started
+    state: restarted
