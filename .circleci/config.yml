@@ -217,7 +217,7 @@ jobs:
       - attach_workspace:
          at: ~/
 
-      - update_dependencies
+      # - update_dependencies
       - install_aws_cli
       - run:
           name: Installing ansible
@@ -260,7 +260,7 @@ jobs:
       - image: python:3.7-alpine3.11
     steps:
       - checkout
-      - update_dependencies
+      # - update_dependencies
       - install_tar
       - install_nodejs_and_npm
       - install_aws_cli
@@ -297,7 +297,7 @@ jobs:
           fingerprints: ["09:1e:92:15:83:8d:67:e7:ee:99:cc:df:66:3c:9c:23"]
       - attach_workspace:
          at: ~/
-      - update_dependencies
+      # - update_dependencies
       - install_tar
       - install_nodejs_and_npm
       - install_aws_cli

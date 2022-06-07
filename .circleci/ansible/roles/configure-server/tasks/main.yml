@@ -1,19 +1,19 @@
 ---
 
-- name: "Update apt packages."
-  become: true
-  apt:
-    update_cache: yes
+# - name: "Update apt packages."
+#   become: true
+#   apt:
+#     update_cache: yes
 
-- name: "Upgrade packages"
-  become: true
-  apt:
-    upgrade: yes
+# - name: "Upgrade packages"
+#   become: true
+#   apt:
+#     upgrade: yes
 
-- name: "Remove dependencies that are no longer required"
-  become: true
-  apt:
-    autoremove: true
+# - name: "Remove dependencies that are no longer required"
+#   become: true
+#   apt:
+#     autoremove: true
 
 - name: "Install NodeJS and NPM "
   become: true
