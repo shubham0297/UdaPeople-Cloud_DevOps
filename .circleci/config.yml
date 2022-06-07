@@ -202,7 +202,7 @@ jobs:
             --filters Name=tag:Name,Values=backend* \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
             --output text >> .circleci/ansible/inventory.txt
-            echo EC2IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=backend* \ --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
+            echo EC2IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=backend* --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
             echo RESERVATIONS=$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
       - persist_to_workspace:
           root: ~/
