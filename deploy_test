@@ -1,0 +1,1 @@
+This file is added to confirm that build triggered by a non-main commit only run the jobs prior to deployment
