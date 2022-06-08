@@ -1,20 +1,4 @@
 ---
-
-# - name: "Update apt packages."
-#   become: true
-#   apt:
-#     update_cache: yes
-
-# - name: "Upgrade packages"
-#   become: true
-#   apt:
-#     upgrade: yes
-
-# - name: "Remove dependencies that are no longer required"
-#   become: true
-#   apt:
-#     autoremove: true
-
 - name: "Install NodeJS and NPM "
   become: true
   apt:
@@ -29,17 +13,3 @@
     global: yes
     production: yes
     state: present
-
-# - name: Creates directory
-#   file:
-#     path: ~/web
-#     state: directory
-
-# - name: Copy index test  page
-#   template:
-#     src: "files/index.js"
-#     dest: "~/web/index.js"
-
-# - name: Executing node
-#   shell: |
-#     pm2 start ~/web/index.js -f

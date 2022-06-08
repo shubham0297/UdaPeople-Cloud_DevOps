@@ -53,6 +53,7 @@
     src: /home/ubuntu/node_exporter-1.0.1.linux-amd64/node_exporter 
     dest: /usr/local/bin/node_exporter
     remote_src: yes
+    mode: '0777'
 
 - name: "Creating an empty service file"
   become: true
