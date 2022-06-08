@@ -278,8 +278,8 @@ jobs:
             export API_URL="http://${BACKEND_IP}:3030"
             echo "API_URL = ${API_URL}"
             echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
-            echo ENVIRONMENT=production  >> frontend/.env
             cat frontend/.env
+          # echo ENVIRONMENT=production  >> frontend/.env
       - run:
           name: Deploy frontend objects
           command: |
@@ -315,7 +315,6 @@ jobs:
           name: Deploy backend
           command: |
             echo ENVIRONMENT=production >> "backend/.env"
-            echo NODE_ENV=production >> "backend/.env"
             echo TYPEORM_CONNECTION=postgres >> "backend/.env"
             echo TYPEORM_MIGRATIONS_DIR=./src/migrations >> "backend/.env"
             echo TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts >> "backend/.env"
@@ -334,6 +333,7 @@ jobs:
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
+          # echo NODE_ENV=production >> "backend/.env"
       # Here's where you will add some code to rollback on  failure   
       - destroy-environment
       - revert-migrations
