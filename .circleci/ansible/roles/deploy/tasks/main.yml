@@ -1,5 +1,4 @@
 ---
-
 - name: "Install NodeJS and NPM "
   become: true
   apt:

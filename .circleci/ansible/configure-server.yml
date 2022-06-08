@@ -12,6 +12,7 @@
     - ansible_host_key_checking: false
     - ansible_stdout_callback: yaml
 
+  # Get the environment variables from CircleCI and add to the EC2 instance
   environment:
     # Add more env vars here
     TYPEORM_CONNECTION: "{{ lookup('env', 'TYPEORM_CONNECTION')}}"
@@ -35,7 +36,6 @@
       raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)
       changed_when: false
 
-  # Get the environment variables from CircleCI and add to the EC2 instance
   roles:
     # Your code here
     - configure-server
